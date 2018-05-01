@@ -1,0 +1,3 @@
+
+
+Privte spacemacs configuration
