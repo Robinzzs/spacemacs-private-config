@@ -39,8 +39,10 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     osx
      (c-c++ :variables
-            c-c++-default-mode-for-headers 'c++-mode)
+            ;; c-c++-default-mode-for-headers 'c++-mode
+            c-c++-enable-clang-support t)
      (python :variables
              python-test-runner '(nose pytest))
      ivy
@@ -57,7 +59,7 @@ This function should only modify configuration layer settings."
      markdown
      neotree
      latex
-     ;;org
+     org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
@@ -485,10 +487,10 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
           ("org-cn"   . "https://elpa.emacs-china.org/org/")
           ("gnu-cn"   . "https://elpa.emacs-china.org/gnu/")))
 
-  ;; https://github.com/syl20bnr/spacemacs/issues/2705
-  ;; (setq tramp-mode nil)
-  (setq tramp-ssh-controlmaster-options
-        "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+  ;; ;; https://github.com/syl20bnr/spacemacs/issues/2705
+  ;; ;; (setq tramp-mode nil)
+  ;; (setq tramp-ssh-controlmaster-options
+  ;;       "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
 
   ;; ss proxy. But it will cause anacond-mode failed.
   (setq socks-server '("Default server" "127.0.0.1" 1080 5))
@@ -499,9 +501,12 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq purpose-mode nil)
 
   ;;madagasscar
+  ;;enable python-mode on SConstruct files
   (setq auto-mode-alist
         (cons '("SConstruct" . python-mode) auto-mode-alist))
   (set-default 'compile-command "scons")
+  ;;c file header
+  (setq flycheck-clang-include-path '("/Users/robinzzs/madagascar/include"))
 
   ;;Error Customize `exec-path-from-shell-arguments' to remove "-i"
   (setq exec-path-from-shell-check-startup-files nil)
