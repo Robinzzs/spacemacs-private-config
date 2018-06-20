@@ -482,7 +482,7 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  (setq configuration-layer--elpa-archives
+  (setq-default configuration-layer--elpa-archives
         '(("melpa-cn" . "https://elpa.emacs-china.org/melpa/")
           ("org-cn"   . "https://elpa.emacs-china.org/org/")
           ("gnu-cn"   . "https://elpa.emacs-china.org/gnu/")))
