@@ -39,10 +39,12 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     osx
+     ;;osx
      (c-c++ :variables
             ;; c-c++-default-mode-for-headers 'c++-mode
-            c-c++-enable-clang-support t)
+            ;; c-c++-enable-clang-support t
+            c-c++-enable-gcc-support t
+            )
      (python :variables
              python-test-runner '(nose pytest))
      ivy
@@ -227,10 +229,13 @@ It should only modify the values of Spacemacs settings."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+                               ;; :size 13
+                               :size 14
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               ;; :powerline-scale 1.2
+                               :powerline-scale 1.1
+                                )
 
    ;; The leader key (default "SPC")
    dotspacemacs-leader-key "SPC"
@@ -482,7 +487,7 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  (setq-default configuration-layer--elpa-archives
+  (setq-default configuration-layer-elpa-archives
         '(("melpa-cn" . "https://elpa.emacs-china.org/melpa/")
           ("org-cn"   . "https://elpa.emacs-china.org/org/")
           ("gnu-cn"   . "https://elpa.emacs-china.org/gnu/")))
@@ -506,8 +511,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
         (cons '("SConstruct" . python-mode) auto-mode-alist))
   (set-default 'compile-command "scons")
   ;;c file header
-  (setq flycheck-clang-include-path '("/Users/robinzzs/madagascar/include"))
-
+  ;; (setq flycheck-clang-include-path '("/home/zzs/madagascar/include"))
+  (setq flycheck-gcc-include-path '("/home/zzs/madagascar/include"))
   ;;Error Customize `exec-path-from-shell-arguments' to remove "-i"
   (setq exec-path-from-shell-check-startup-files nil)
 
@@ -517,7 +522,11 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;;                                        (dired-directory dired-directory"%b]"))))
 
   ;;window width and height
-  (set-frame-width (selected-frame) 80)
+  ;;mac
+  ;; (set-frame-width (selected-frame) 80)
+  ;; (set-frame-height (selected-frame) 50)
+  ;;linux workstation
+  (set-frame-width (selected-frame) 90)
   (set-frame-height (selected-frame) 50)
 
   ;;auto pairs (),"",{},
