@@ -536,6 +536,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;;                                             (undo-tree-visualize-undo)))
 
 
+
+
 )
 
 (defun dotspacemacs/user-config ()
