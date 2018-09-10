@@ -41,7 +41,7 @@ This function should only modify configuration layer settings."
      ;; ----------------------------------------------------------------
      ;;osx
      (c-c++ :variables
-            ;; c-c++-default-mode-for-headers 'c++-mode
+            ;;c-c++-default-mode-for-headers '-mode
             ;; c-c++-enable-clang-support t
             c-c++-enable-gcc-support t
             )
@@ -230,11 +230,11 @@ It should only modify the values of Spacemacs settings."
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
                                ;; :size 13
-                               :size 14
+                               :size 15
                                :weight normal
                                :width normal
                                ;; :powerline-scale 1.1
-                               :powerline-scale 1.2
+                               :powerline-scale 1.1
                                 )
 
    ;; The leader key (default "SPC")
@@ -511,8 +511,13 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
         (cons '("SConstruct" . python-mode) auto-mode-alist))
   (set-default 'compile-command "scons")
   ;;c file header
-  ;; (setq flycheck-clang-include-path '("/home/zzs/madagascar/include"))
-  (setq flycheck-gcc-include-path '("/home/zzs/madagascar/include"))
+  ;; (setq flycheck-clang-include-path '("/home/zzs/madagascar/include/"))
+  (setq flycheck-gcc-include-path '(
+                                    "/usr/include/openblas"
+                                    "/home/zzs/madagascar/include/"
+                                    ))
+  ;;((c++-mode
+   ;; (flycheck-gcc-include-path . ("/home/zzs/madagascar/include"))))
   ;;Error Customize `exec-path-from-shell-arguments' to remove "-i"
   (setq exec-path-from-shell-check-startup-files nil)
 
@@ -526,8 +531,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; (set-frame-width (selected-frame) 80)
   ;; (set-frame-height (selected-frame) 50)
   ;;linux workstation
-  (set-frame-width (selected-frame) 90)
-  (set-frame-height (selected-frame) 50)
+  (set-frame-width (selected-frame) 83)
+  (set-frame-height (selected-frame) 47)
 
   ;;auto pairs (),"",{},
   (electric-pair-mode )
