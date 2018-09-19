@@ -39,51 +39,7 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; ================== Spacemacs Layers ==================
-     spacemacs-completion
-     spacemacs-editing
-     spacemacs-editing-visual
-     spacemacs-evil
-     ;; spacemacs-language
-     (spacemacs-layouts :variables layouts-enable-autosave nil)
-     spacemacs-misc
-     spacemacs-modeline
-     spacemacs-navigation
-     spacemacs-org
-     spacemacs-project
-     spacemacs-visual
-
-     ;; ======================== Misc ========================
-     ;; osx
-     better-defaults
-     neotree
-     ivy
-     auto-completion
-     syntax-checking
-     ;; spell-checking
-     ;; version-control
-     (colors :packages (rainbow-mode))
-     (spell-checking :variables spell-checking-enable-by-default nil)
-     (gtags :disabled-for emacs-lisp latex python shell-scripts c-c++)
-     (ibuffer :variables ibuffer-group-buffers-by 'projects)
-     (treemacs :variables treemacs-use-follow-mode t
-               treemacs-use-filewatch-mode t)
-     (shell :variables
-            shell-default-shell 'ansi-term
-            shell-default-term-shell "zsh")
-     (git :variables
-          git-magit-status-fullscreen t
-          magit-push-always-verify nil
-          magit-save-repository-buffers 'dontask
-          magit-revert-buffers 'silent
-          magit-refs-show-commit-count 'all
-          magit-revision-show-gravatars nil)
-
-     ;; ===================== Languages =====================
-     org
-     emacs-lisp
-     latex
-     markdown
+     ;;osx
      (c-c++ :variables
             ;;c-c++-default-mode-for-headers '-mode
             ;; c-c++-enable-clang-support t
@@ -91,12 +47,34 @@ This function should only modify configuration layer settings."
             )
      (python :variables
              python-test-runner '(nose pytest))
-
-     ;; ======================== Others ========================
+     ivy
+     auto-completion
+     better-defaults
+     emacs-lisp
+     (git :variables
+          git-magit-status-fullscreen t
+          magit-push-always-verify nil
+          magit-save-repository-buffers 'dontask
+          magit-revert-buffers 'silent
+          magit-refs-show-commit-count 'all
+          magit-revision-show-gravatars nil)
+     markdown
+     neotree
+     latex
+     org
+     ;; (shell :variables
+     ;;        shell-default-height 30
+     ;;        shell-default-position 'bottom)
+     (gtags :disabled-for emacs-lisp latex python shell-scripts c-c++)
+     (spell-checking :variables spell-checking-enable-by-default nil)
+     ;;spell-checking
+     syntax-checking
+     (ibuffer :variables ibuffer-group-buffers-by 'projects)
      (chinese :packages youdao-dictionary fcitx
               :variables chinese-enable-fcitx nil
               chinese-enable-youdao-dict t)
 
+     ;; version-control
      )
 
    ;; List of additional packages that will be installed without being
@@ -112,69 +90,28 @@ This function should only modify configuration layer settings."
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-
-   dotspacemacs-excluded-packages
-   '(
-     ;; ================== Spacemacs Layers ==================
-     ;; spacemacs-bootstrap
-     holy-mode spacemacs-theme
-     ;; spacemacs-completion
-     ido-vertical-mode ;default-helm-config
-     ;; spacemacs-editing
-     lorem-ipsum clean-aindent-mode ;smartparens
-     ;; spacemacs-editing-visual
-     volatile-highlights highlight-indentation
-     ;; spacemacs-evil
-     evil-args evil-mc evil-ediff evil-exchange evil-unimpaired
-     evil-indent-plus  vi-tilde-fringe evil-lisp-state evil-escape
-     ;evil-cleverparens evil-goggles
-     ;; spacemacs-layouts
-     eyebrowse
-     ;; spacemacs-misc
-     dumb-jump
-     ;; spacemacs-modeline
-     symon fancy-battery ;doom-modeline vim-powerline
-     ;; spacemacs-navigation
-     flx-ido smooth-scrolling
-     ;; spacemacs-org
-     org-bullets
-
-     ;; ======================== Misc ========================
-     ;; spell-checking
-     auto-dictionary flyspell-correct-helm
-     ;; auto-completion
-     ac-ispell auto-complete yasnippet-snippets
-     ;; git
-     magit-gitflow magit-gh-pulls git-gutter-fringe
-     git-gutter orgit smeargle
-     ;; shell-script
-     fish-mode flycheck-bashate
-
-     ;; ===================== Languages =====================
-     ;; markdown
-     gh-md
-     ;; org
-     org-repo-todo org-download org-timer org-present orglue
-     ;; python
-     ;anaconda-mode company-anaconda yapfify cython
-     ;; emacs-lisp
-
-     ;; c-c++
-     realgud clang-format disaster
-
-
-     ;; ======================== Others ========================
-
-     ;; leuven-theme spray
-     ;; ace-jump-mode
-     ;; define-word  epic
-     ;; helm-flyspell
-     ;; helm-c-yasnippet ace-jump-helm-line helm-make
-     ;; helm-themes helm-swoop helm-spacemacs-help
-     ;; company-quickhelp
-     ;; window-purpose  helm-purpose
-     ;; spacemacs-purpose-popwin
-     )
+   dotspacemacs-excluded-packages'()
+   ;; dotspacemacs-excluded-packages
+   ;; '(
+   ;;                  magit-gh-pulls magit-gitflow  evil-mc realgud
+   ;;                  evil-args evil-ediff evil-exchange evil-unimpaired
+   ;;                  evil-indent-plus volatile-highlights smartparens
+   ;;                  holy-mode skewer-mode rainbow-delimiters
+   ;;                  highlight-indentation vi-tilde-fringe eyebrowse
+   ;;                  org-bullets smooth-scrolling org-repo-todo org-download
+   ;;                  org-timer livid-mode git-gutter git-gutter-fringe
+   ;;                  evil-escape leuven-theme gh-md evil-lisp-state spray
+   ;;                  lorem-ipsum symon
+   ;;                  ac-ispell ace-jump-mode autpa-complete auto-dictionary
+   ;;                  clang-format define-word google-translate disaster epic
+   ;;                  fancy-battery org-present orgit orglue spacemacs-theme
+   ;;                  helm-flyspell flyspell-correct-helm clean-aindent-mode
+   ;;                  helm-c-yasnippet ace-jump-helm-line helm-make magithub
+   ;;                  helm-themes helm-swoop helm-spacemacs-help smeargle
+   ;;                  ido-vertical-mode flx-ido company-quickhelp
+   ;;                  window-purpose ivy-purpose helm-purpose
+   ;;                  spacemacs-purpose-popwin
+   ;;                  )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -284,8 +221,8 @@ It should only modify the values of Spacemacs settings."
    ;; to create your own spaceline theme. Value can be a symbol or list with\
    ;; additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   ;; dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
-   dotspacemacs-mode-line-theme '(spacemacs :separator slant :separator-scale 1.0)
+   dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
+
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
    dotspacemacs-colorize-cursor-according-to-state t
@@ -557,10 +494,10 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
           ("org-cn"   . "https://elpa.emacs-china.org/org/")
           ("gnu-cn"   . "https://elpa.emacs-china.org/gnu/")))
 
-  ;; https://github.com/syl20bnr/spacemacs/issues/2705
-  ;; (setq tramp-mode nil)
-  (setq tramp-ssh-controlmaster-options
-        "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+  ;; ;; https://github.com/syl20bnr/spacemacs/issues/2705
+  ;; ;; (setq tramp-mode nil)
+  ;; (setq tramp-ssh-controlmaster-options
+  ;;       "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
 
   ;; ss proxy. But it will cause anacond-mode failed.
   (setq socks-server '("Default server" "127.0.0.1" 1080 5))
@@ -589,12 +526,6 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;;Error Customize `exec-path-from-shell-arguments' to remove "-i"
   (setq exec-path-from-shell-check-startup-files nil)
 
-  ;; company-backends
-  ;; (set (make-local-variable 'company-backends)
-  ;;     '((company-lsp company-yasnippet ) company-dabbrev-code
-  ;;       company-dabbrev
-  ;;       company-files))
-
   ;;setting whitespace don't show
   ;;(setq spacemacs-show-trailing-whitespace nil)
 
@@ -611,14 +542,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (set-frame-width (selected-frame) 83)
   (set-frame-height (selected-frame) 47)
 
-  ;; warnig config
-  ;;(setq warning-minimum-level :error)
-
   ;;auto pairs (),"",{},
-  ;;(electric-pair-mode )
-
-  ;;hungry-delete
-  ;;(global-hungry-delete-mode t)
+  (electric-pair-mode )
 
   ;; (use-package evil-surround
   ;;   :ensure t
@@ -632,17 +557,6 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;;                                             (undo-tree-visualize)
   ;;                                             (undo-tree-visualize-undo)))
 
-  ;;setting copy from https://github.com/ztlevi/spacemacs-config
-  ;; maybe just for mac
-  ;; defaults write org.gnu.Emacs Emacs.ToolBar -string no
-  ;; defaults write org.gnu.Emacs Emacs.ScrollBar -string no
-  ;; defaults write org.gnu.Emacs Emacs.MenuBar -string no
-  ;; for linux add
-  ;; (menu-bar-mode -1)
-  ;; (tool-bar-mode -1)
-  ;; (scroll-bar-mode -1)
-  ;; in .emacs.d/early-init.el
-
 
 )
 
@@ -653,23 +567,12 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
-  ;; diminish modes
-  (spacemacs|diminish meghanada-mode " ⓜ" " M")
-  (spacemacs|diminish company-box-mode)
-  (spacemacs|diminish which-key-mode)
-  (spacemacs|diminish smartparens-mode)
-  (spacemacs|diminish hybrid-mode)
-  (spacemacs|diminish mmm-mode)
-  (spacemacs|diminish tide-mode)
-  (spacemacs|diminish dired-omit-mode)
-  (spacemacs|diminish all-the-icons-dired-mode)
+  (global-hungry-delete-mode t)
   (spacemacs|diminish helm-gtags-mode)
   (spacemacs|diminish ggtags-mode)
+  (spacemacs|diminish which-key-mode)
+  ;;(spacemacs|diminish spacemacs-whitespace-cleanup-mode)
   (spacemacs|diminish counsel-mode)
-  (spacemacs|diminish importmagic-mode)
-  (spacemacs|diminish whitespace-mode)
-  (spacemacs|diminish hungry-delete-mode)
-  (spacemacs|diminish spacemacs-whitespace-cleanup-mode)
 
 
 )
