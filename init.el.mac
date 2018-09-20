@@ -57,15 +57,13 @@ This function should only modify configuration layer settings."
      ;; ======================== Misc ========================
      osx
      better-defaults
-     neotree
+     ;;neotree
      ivy
      auto-completion
      syntax-checking
-     ;; spell-checking
-     ;; version-control
      (colors :packages (rainbow-mode))
-     (spell-checking :variables spell-checking-enable-by-default nil)
-     (gtags :disabled-for emacs-lisp latex python shell-scripts c-c++)
+     ;;(spell-checking :variables spell-checking-enable-by-default nil)
+     ;;(gtags :disabled-for emacs-lisp latex python shell-scripts c-c++)
      (ibuffer :variables ibuffer-group-buffers-by 'projects)
      (treemacs :variables treemacs-use-follow-mode t
                treemacs-use-filewatch-mode t)
@@ -79,8 +77,8 @@ This function should only modify configuration layer settings."
           magit-revert-buffers 'silent
           magit-refs-show-commit-count 'all
           magit-revision-show-gravatars nil)
-     (version-control :variables version-control-diff-tool 'diff-hl
-                      version-control-diff-side 'left)
+     ;; (version-control :variables version-control-diff-tool 'diff-hl
+     ;;                  version-control-diff-side 'left)
 
      ;; ===================== Languages =====================
      org
@@ -163,7 +161,6 @@ This function should only modify configuration layer settings."
 
      ;; c-c++
      realgud clang-format disaster
-
 
      ;; ======================== Others ========================
 
@@ -566,7 +563,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq socks-server '("Default server" "127.0.0.1" 1080 5))
   (setq evil-shift-round nil)
   (setq byte-compile-warnings '(not obsolete))
-  (setq warning-minimum-level :error)
+
   ;; hack for remove purpose mode
   (setq purpose-mode nil)
 
@@ -576,12 +573,10 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
         (cons '("SConstruct" . python-mode) auto-mode-alist))
   (set-default 'compile-command "scons")
   ;;set flycheck path for c file header
-  ;; (setq flycheck-clang-include-path '("/home/zzs/madagascar/include/"))
-  (setq flycheck-gcc-include-path '(
-                                    ;;"/usr/include/openblas"
-                                    "/home/zzs/madagascar/include/"
-                                    ;;"/home/zzs/Downloads/gcc-8.2.0/include"
-                                    ))
+  (setq flycheck-clang-include-path '(
+                                      "/usr/include/"
+                                      "/Users/robinzzs/madagascar/include/"
+                                      ))
 
   ;;set flycheck warning for python
   ;;(setq spaceline-toggle-flycheck-warning nil)
