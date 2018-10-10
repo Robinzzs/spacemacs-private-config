@@ -1,21 +1,18 @@
 Privte spacemacs configuration
+======================================
 
-1. init.el.mac specially set for Mac operation system
-   including:
-   different font setting
+* 1. init.el.mac specially set for Mac operation system<br>
 
-2. init.el.linux specially set for different Linux distributions system
-   including:
-   different font setting
+* 2. init.el.linux specially set for different Linux distributions system<br>
 
-3. custom.el record some customized setting for functions
+* 3. custom.el record some customized setting for functions<br>
 
-Update date 2018.07.10
+>Update date 2018.07.10
 
-1. organize the packages
+* 1. organize the packages<br>
 
-2. add flycheck path for c headers file
+* 2. add flycheck path for c headers file<br>
 
-3. optimize startup speed
+* 3. optimize startup speed<br>
 
-update date 2018.09.20
+>update date 2018.09.20
