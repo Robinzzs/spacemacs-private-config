@@ -286,7 +286,6 @@ It should only modify the values of Spacemacs settings."
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
    ;; dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
    dotspacemacs-mode-line-theme '(spacemacs :separator slant :separator-scale 1.0)
-
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
    dotspacemacs-colorize-cursor-according-to-state t
@@ -609,8 +608,16 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; (set-frame-width (selected-frame) 80)
   ;; (set-frame-height (selected-frame) 50)
   ;;linux workstation
-  (set-frame-width (selected-frame) 83)
-  (set-frame-height (selected-frame) 47)
+  (set-frame-width (selected-frame) 75)
+  (set-frame-height (selected-frame) 41)
+
+  ;;customize key banding
+  (global-set-key (kbd "M-p") 'previous-line)
+  (global-set-key (kbd "M-n") 'next-line)
+
+  ;; customize latex mode
+  ;; (add-hook 'latex-mode-common-hook (lambda ()
+  ;;                                 (setq latex-basic-offset 0)))
 
   ;; warnig config
   ;;(setq warning-minimum-level :error)
@@ -619,7 +626,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;;(electric-pair-mode )
 
   ;;hungry-delete
-  ;;(global-hungry-delete-mode t)
+  ;; (global-hungry-delete-mode t)
+  ;; (require 'hungry-delete)
 
   ;; (use-package evil-surround
   ;;   :ensure t
