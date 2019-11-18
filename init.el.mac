@@ -591,8 +591,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
           ("org-cn"   . "https://elpa.emacs-china.org/org/")
           ("gnu-cn"   . "https://elpa.emacs-china.org/gnu/")))
 
-  ;; ;; https://github.com/syl20bnr/spacemacs/issues/2705
-  ;; ;; (setq tramp-mode nil)
+  ;; https://github.com/syl20bnr/spacemacs/issues/2705
+  ;; (setq tramp-mode nil)
   ;; (setq tramp-ssh-controlmaster-options
   ;;       "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
 
