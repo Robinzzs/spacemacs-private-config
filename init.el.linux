@@ -83,11 +83,14 @@ This function should only modify configuration layer settings."
             shell-default-shell 'ansi-term
             shell-default-term-shell "zsh")
      (git :variables
+          git-magit-status-fullscreen t
           magit-push-always-verify nil
           magit-save-repository-buffers 'dontask
           magit-revert-buffers 'silent
           magit-refs-show-commit-count 'all
           magit-revision-show-gravatars nil)
+    (version-control :variables version-control-diff-tool 'diff-hl
+                           version-control-diff-side 'left)
      shell-scripts
      imenu-list
 
@@ -156,9 +159,11 @@ This function should only modify configuration layer settings."
      auto-dictionary flyspell-correct-helm
      ;; auto-completion
      ac-ispell auto-complete yasnippet-snippets
-     ;; git
-     magit-gitflow magit-gh-pulls git-gutter-fringe
-     git-gutter orgit smeargle
+    ;; git
+    magit-gitflow orgit smeargle
+    ;; version-control
+    smerge-mode git-gutter git-gutter+ git-gutter-fringe
+    git-gutter-fringe+
      ;; shell-script
      fish-mode flycheck-bashate
 
@@ -692,13 +697,15 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; in .emacs.d/early-init.el
 
 
-)
+  )
+
 (defun dotspacemacs/user-load ()
   "Library to load while dumping.
 This function is called only while dumping Spacemacs configuration. You can
 `require' or `load' the libraries of your choice that will be included in the
 dump."
   )
+
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
