@@ -39,6 +39,7 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+
      ;; ================== Spacemacs Layers ==================
      spacemacs-completion
      spacemacs-editing
@@ -55,27 +56,14 @@ This function should only modify configuration layer settings."
 
      ;; ======================== Misc ========================
      ;; osx
-     (pandoc :variables org-pandoc-options '((standalone . t)))
      better-defaults
-     neotree
+     ;; neotree
      ivy
      auto-completion
      syntax-checking
-     ;; spell-checking
-     ;; version-control
      (colors :packages (rainbow-mode))
-     prodigy
-     (syntax-checking :variables syntax-checking-enable-by-default t
-                      syntax-checking-enable-tooltips nil)
-     (spell-checking :variables spell-checking-enable-by-default t)
-     (auto-completion :variables
-                      auto-completion-enable-help-tooltip nil ;company-box provided
-                      auto-completion-enable-sort-by-usage t
-                      auto-completion-return-key-behavior 'complete
-                      auto-completion-tab-key-behavior 'complete
-                      auto-completion-enable-snippets-in-popup nil
-                      auto-completion-idle-delay 0.2)
-     (gtags :disabled-for emacs-lisp latex python shell-scripts c-c++)
+     ;; (spell-checking :variables spell-checking-enable-by-default nil)
+     ;; (gtags :disabled-for emacs-lisp latex python shell-scripts c-c++)
      (ibuffer :variables ibuffer-group-buffers-by 'projects)
      (treemacs :variables treemacs-use-follow-mode t
                treemacs-use-filewatch-mode t)
@@ -89,10 +77,8 @@ This function should only modify configuration layer settings."
           magit-revert-buffers 'silent
           magit-refs-show-commit-count 'all
           magit-revision-show-gravatars nil)
-    (version-control :variables version-control-diff-tool 'diff-hl
-                           version-control-diff-side 'left)
-     shell-scripts
-     imenu-list
+     ;; (version-control :variables version-control-diff-tool 'diff-hl
+     ;;                  version-control-diff-side 'left)
 
      ;; ===================== Languages =====================
      org
@@ -101,8 +87,8 @@ This function should only modify configuration layer settings."
      markdown
      (c-c++ :variables
             ;;c-c++-default-mode-for-headers '-mode
-            ;; c-c++-enable-clang-support t
-            c-c++-enable-gcc-support t
+            c-c++-enable-clang-support t
+            ;; c-c++-enable-gcc-support t
             )
      (python :variables
              python-test-runner '(nose pytest))
@@ -127,16 +113,15 @@ This function should only modify configuration layer settings."
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-
    dotspacemacs-excluded-packages
    '(
      ;; ================== Spacemacs Layers ==================
      ;; spacemacs-bootstrap
      holy-mode spacemacs-theme
      ;; spacemacs-completion
-     ido-vertical-mode default-helm-config flx-ido
+     ido-vertical-mode default-helm-config
      ;; spacemacs-editing
-     lorem-ipsum clean-aindent-mode smartparens
+     lorem-ipsum clean-aindent-mode ;smartparens
      ;; spacemacs-editing-visual
      volatile-highlights highlight-indentation
      ;; spacemacs-evil
@@ -150,35 +135,37 @@ This function should only modify configuration layer settings."
      ;; spacemacs-modeline
      symon fancy-battery doom-modeline vim-powerline
      ;; spacemacs-navigation
-     smooth-scrolling
+     flx-ido ;smooth-scrolling
      ;; spacemacs-org
      org-bullets
 
      ;; ======================== Misc ========================
+     ;; dash
+     counsel-dash helm-dash
      ;; spell-checking
      auto-dictionary flyspell-correct-helm
      ;; auto-completion
      ac-ispell auto-complete yasnippet-snippets
-    ;; git
-    magit-gitflow orgit smeargle
-    ;; version-control
-    smerge-mode git-gutter git-gutter+ git-gutter-fringe
-    git-gutter-fringe+
+     ;; git
+     magit-gitflow  orgit smeargle
      ;; shell-script
      fish-mode flycheck-bashate
+     ;; version-control
+     smerge-mode git-gutter git-gutter+ git-gutter-fringe
+     git-gutter-fringe+
 
      ;; ===================== Languages =====================
      ;; markdown
      gh-md
      ;; org
-     org-repo-todo org-download org-timer org-present orglue
+     org-download org-present org-brain
      ;; python
-     ;anaconda-mode company-anaconda yapfify cython
+     anaconda-mode company-anaconda yapfify cython
      ;; emacs-lisp
-
+     nameless overseer
      ;; c-c++
-     realgud clang-format disaster
-
+     realgud clang-format disaster rtags company-rtags
+     ivy-rtags
 
      ;; ======================== Others ========================
 
@@ -191,6 +178,7 @@ This function should only modify configuration layer settings."
      ;; company-quickhelp
      ;; window-purpose  helm-purpose
      ;; spacemacs-purpose-popwin
+
      )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
@@ -212,7 +200,7 @@ It should only modify the values of Spacemacs settings."
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
   (setq-default
-;; If non-nil then enable support for the portable dumper. You'll need
+   ;; If non-nil then enable support for the portable dumper. You'll need
    ;; to compile Emacs 27 from source following the instructions in file
    ;; EXPERIMENTAL.org at to root of the git repository.
    ;; (default nil)
@@ -221,7 +209,7 @@ It should only modify the values of Spacemacs settings."
    ;; File path pointing to emacs 27.1 executable compiled with support
    ;; for the portable dumper (this is currently the branch pdumper).
    ;; (default "emacs-27.0.50")
-   dotspacemacs-emacs-pdumper-executable-file "emacs-27.0.50"
+   dotspacemacs-emacs-pdumper-executable-file "emacs-26.3"
 
    ;; Name of the Spacemacs dump file. This is the file will be created by the
    ;; portable dumper in the cache directory under dumps sub-directory.
@@ -315,14 +303,14 @@ It should only modify the values of Spacemacs settings."
                          doom-one)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
-   ;; `all-the-icons', `custom', `vim-powerline' and `vanilla'. The first three
-   ;; are spaceline themes. `vanilla' is default Emacs mode-line. `custom' is a
-   ;; user defined themes, refer to the DOCUMENTATION.org for more info on how
-   ;; to create your own spaceline theme. Value can be a symbol or list with\
-   ;; additional properties.
+   ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
+   ;; first three are spaceline themes. `doom' is the doom-emacs mode-line.
+   ;; `vanilla' is default Emacs mode-line. `custom' is a user defined themes,
+   ;; refer to the DOCUMENTATION.org for more info on how to create your own
+   ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
    ;; dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
-   dotspacemacs-mode-line-theme '(all-the-icons :separator none :separator-scale 1.5)
+   dotspacemacs-mode-line-theme '(all-the-icons :separator none :separator-scale 1.0)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -330,14 +318,12 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   ;; "Source Code Pro"
    dotspacemacs-default-font '("Operator Mono Light"
-                               ;; :size 13
-                               :size 15
-                               :weight semi-light
-                               ;; :width condensed
-                               ;; :powerline-scale 1.1
-                                )
+                               :size 14
+                               :weight normal
+                               :width normal
+                               ;; :powerline-scale 1.5
+                               )
 
    ;; The leader key (default "SPC")
    dotspacemacs-leader-key "SPC"
@@ -369,20 +355,20 @@ It should only modify the values of Spacemacs settings."
    ;; works in the GUI. (default nil)
    dotspacemacs-distinguish-gui-tab nil
 
-   ;; If non-nil `Y' is remapped to `y$' in Evil states. (default nil)
-   dotspacemacs-remap-Y-to-y$ nil
+   ;; ;; If non-nil `Y' is remapped to `y$' in Evil states. (default nil)
+   ;; dotspacemacs-remap-Y-to-y$ nil
 
-   ;; If non-nil, the shift mappings `<' and `>' retain visual state if used
-   ;; there. (default t)
-   dotspacemacs-retain-visual-state-on-shift t
+   ;; ;; If non-nil, the shift mappings `<' and `>' retain visual state if used
+   ;; ;; there. (default t)
+   ;; dotspacemacs-retain-visual-state-on-shift t
 
-   ;; If non-nil, `J' and `K' move lines up and down when in visual mode.
-   ;; (default nil)
-   dotspacemacs-visual-line-move-text t
+   ;; ;; If non-nil, `J' and `K' move lines up and down when in visual mode.
+   ;; ;; (default nil)
+   ;; dotspacemacs-visual-line-move-text t
 
-   ;; If non-nil, inverse the meaning of `g' in `:substitute' Evil ex-command.
-   ;; (default nil)
-   dotspacemacs-ex-substitute-global nil
+   ;; ;; If non-nil, inverse the meaning of `g' in `:substitute' Evil ex-command.
+   ;; ;; (default nil)
+   ;; dotspacemacs-ex-substitute-global nil
 
    ;; Name of the default layout (default "Default")
    dotspacemacs-default-layout-name "Default"
@@ -413,26 +399,26 @@ It should only modify the values of Spacemacs settings."
    ;; Maximum number of rollback slots to keep in the cache. (default 5)
    dotspacemacs-max-rollback-slots 5
 
-   ;; If non-nil, `helm' will try to minimize the space it uses. (default nil)
-   dotspacemacs-helm-resize nil
+   ;; ;; If non-nil, `helm' will try to minimize the space it uses. (default nil)
+   ;; dotspacemacs-helm-resize nil
 
-   ;; if non-nil, the helm header is hidden when there is only one source.
-   ;; (default nil)
-   dotspacemacs-helm-no-header nil
+   ;; ;; if non-nil, the helm header is hidden when there is only one source.
+   ;; ;; (default nil)
+   ;; dotspacemacs-helm-no-header nil
 
-   ;; define the position to display `helm', options are `bottom', `top',
-   ;; `left', or `right'. (default 'bottom)
-   dotspacemacs-helm-position 'bottom
+   ;; ;; define the position to display `helm', options are `bottom', `top',
+   ;; ;; `left', or `right'. (default 'bottom)
+   ;; dotspacemacs-helm-position 'bottom
 
-   ;; Controls fuzzy matching in helm. If set to `always', force fuzzy matching
-   ;; in all non-asynchronous sources. If set to `source', preserve individual
-   ;; source settings. Else, disable fuzzy matching in all sources.
-   ;; (default 'always)
-   dotspacemacs-helm-use-fuzzy 'always
+   ;; ;; Controls fuzzy matching in helm. If set to `always', force fuzzy matching
+   ;; ;; in all non-asynchronous sources. If set to `source', preserve individual
+   ;; ;; source settings. Else, disable fuzzy matching in all sources.
+   ;; ;; (default 'always)
+   ;; dotspacemacs-helm-use-fuzzy 'always
 
-   ;; If non-nil, the paste transient-state is enabled. While enabled, pressing
-   ;; `p' several times cycles through the elements in the `kill-ring'.
-   ;; (default nil)
+   ;; If non-nil, the paste transient-state is enabled. While enabled, after you
+   ;; paste something, pressing `C-j' and `C-k' several times cycles through the
+   ;; elements in the `kill-ring'. (default nil)
    dotspacemacs-enable-paste-transient-state nil
 
    ;; Which-key delay in seconds. The which-key buffer is the popup listing
@@ -528,7 +514,15 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-highlight-delimiters 'all
 
    ;; If non-nil, start an Emacs server if one is not already running.
+   ;; (default nil)
    dotspacemacs-enable-server nil
+
+   ;; Set the emacs server socket location.
+   ;; If nil, uses whatever the Emacs default is, otherwise a directory path
+   ;; like \"~/.emacs.d/server\". It has no effect if
+   ;; `dotspacemacs-enable-server' is nil.
+   ;; (default nil)
+   dotspacemacs-server-socket-dir nil
 
    ;; If non-nil, advise quit functions to keep server open when quitting.
    ;; (default nil)
@@ -572,8 +566,7 @@ It should only modify the values of Spacemacs settings."
    ;; `trailing' to delete only the whitespace at end of lines, `changed' to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   ;;dotspacemacs-whitespace-cleanup 'change
-   dotspacemacs-whitespace-cleanup 'trailing
+   dotspacemacs-whitespace-cleanup 'all
 
    ;; Either nil or a number of seconds. If non-nil zone out after the specified
    ;; number of seconds. (default nil)
@@ -584,27 +577,35 @@ It should only modify the values of Spacemacs settings."
    ;; (default nil)
    dotspacemacs-pretty-docs nil))
 
+(defun dotspacemacs/user-env ()
+  "Environment variables setup.
+This function defines the environment variables for your Emacs session. By
+default it calls `spacemacs/load-spacemacs-env' which loads the environment
+variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
+See the header of this file for more information."
+  (spacemacs/load-spacemacs-env))
+
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
 This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
- (setq-default configuration-layer-elpa-archives
-       '(("melpa-cn" . "https://elpa.emacs-china.org/melpa/")
-         ("org-cn"   . "https://elpa.emacs-china.org/org/")
-         ("gnu-cn"   . "https://elpa.emacs-china.org/gnu/")))
+  (setq-default configuration-layer-elpa-archives
+        '(("melpa-cn" . "https://elpa.emacs-china.org/melpa/")
+          ("org-cn"   . "https://elpa.emacs-china.org/org/")
+          ("gnu-cn"   . "https://elpa.emacs-china.org/gnu/")))
 
   ;; https://github.com/syl20bnr/spacemacs/issues/2705
   ;; (setq tramp-mode nil)
   ;; (setq tramp-ssh-controlmaster-options
-  ;;      "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+  ;;       "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
 
   ;; ss proxy. But it will cause anacond-mode failed.
   (setq socks-server '("Default server" "127.0.0.1" 1080 5))
   (setq evil-shift-round nil)
   (setq byte-compile-warnings '(not obsolete))
-  (setq warning-minimum-level :error)
+
   ;; hack for remove purpose mode
   (setq purpose-mode nil)
 
@@ -617,15 +618,16 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
         (cons '("SConstruct" . python-mode) auto-mode-alist))
   (set-default 'compile-command "scons")
   ;;set flycheck path for c file header
+  ;; (setq flycheck-clang-include-path '(
+  ;;                                     "/usr/include/"
+  ;;                                     "/Users/robinzzs/madagascar/include/"
+  ;;                                     "/Users/robinzzs/Codebuild/V5input/"
+  ;;                                     ))
   (setq flycheck-clang-include-path '(
                                       "/usr/include/openblas/"
                                       "/home/zzs/madagascar/include/"
                                       ))
-  ;; (setq flycheck-gcc-include-path '(
-  ;;                                   "/usr/include/openblas"
-  ;;                                   "/home/zzs/madagascar/include"
-  ;;                                   "/home/zzs/Downloads/gcc-8.2.0/include"
-  ;;                                   ))
+
 
   ;;set flycheck warning for python
   ;;(setq spaceline-toggle-flycheck-warning nil)
@@ -648,30 +650,17 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;;                                        (dired-directory dired-directory"%b]"))))
 
   ;;window width and height
-  ;;mac
-  ;; (set-frame-width (selected-frame) 80)
-  ;; (set-frame-height (selected-frame) 50)
-  ;;linux workstation
-  (set-frame-width (selected-frame) 91)
+  (set-frame-width (selected-frame) 80)
   (set-frame-height (selected-frame) 45)
-
-  ;;customize key banding
-  (global-set-key (kbd "M-p") 'previous-line)
-  (global-set-key (kbd "M-n") 'next-line)
-
-  ;; customize latex mode
-  ;; (add-hook 'latex-mode-common-hook (lambda ()
-  ;;                                 (setq latex-basic-offset 0)))
 
   ;; warnig config
   ;;(setq warning-minimum-level :error)
 
-  ;;auto pairs (),"",{},
-  ;; (electric-pair-mode )
+  ;; auto pairs (),"",{},
+  (electric-pair-mode )
 
   ;;hungry-delete
-  ;; (global-hungry-delete-mode t)
-  ;; (require 'hungry-delete)
+  ;;(global-hungry-delete-mode t)
 
   ;; (use-package evil-surround
   ;;   :ensure t
@@ -690,7 +679,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; defaults write org.gnu.Emacs Emacs.ToolBar -string no
   ;; defaults write org.gnu.Emacs Emacs.ScrollBar -string no
   ;; defaults write org.gnu.Emacs Emacs.MenuBar -string no
-  ;; for linux add
+  ;; or both mac and linux add
   ;; (menu-bar-mode -1)
   ;; (tool-bar-mode -1)
   ;; (scroll-bar-mode -1)
@@ -713,11 +702,6 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
-  ;; disable enter visual mode automatically yank
-  (fset 'evil-visual-update-x-selection 'ignore)
-
-  (spacemacs|add-company-backends :modes text-mode)
-
   ;; diminish modes
   (spacemacs|diminish meghanada-mode " ⓜ" " M")
   (spacemacs|diminish company-box-mode)
@@ -735,7 +719,6 @@ before packages are loaded."
   (spacemacs|diminish whitespace-mode)
   (spacemacs|diminish hungry-delete-mode)
   (spacemacs|diminish spacemacs-whitespace-cleanup-mode)
-
 
 )
 
