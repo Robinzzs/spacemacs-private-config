@@ -1,4 +1,4 @@
-Privte spacemacs configuration
+Privte spacemacs configuration (Deprecated! Turn to doom-emacs)
 ======================================
 
 * 1.init.el.mac specially set for Mac operation system<br>
